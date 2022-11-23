@@ -8,5 +8,5 @@
 import Foundation
 
 struct NASAImagesAndVideosSearchResult: Codable {
-    let colletion:NASAImagesAndVideosSearchResultCollection
+    let collection:NASAImagesAndVideosSearchResultCollection
 }

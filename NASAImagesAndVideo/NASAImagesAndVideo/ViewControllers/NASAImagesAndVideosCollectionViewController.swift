@@ -9,6 +9,8 @@ import UIKit
 
 class NASAImagesAndVideosCollectionViewController: UIViewController {
 
+    let viewModel = NASAImagesAndVideosCollectionViewModel()
+    var lastFetchedPageNumber = 0
     let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Enter name"
@@ -52,7 +54,11 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
 }
 
 extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            viewModel.getImagesAndVideosMetaData(text: text,
+                                                 pageNumber: lastFetchedPageNumber+1)
+        }
+        searchBar.resignFirstResponder()
     }
 }
