@@ -28,6 +28,7 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         super.viewDidLoad()
         title = "NASA images and videos"
         view.backgroundColor = UIColor.white
+        searchBar.delegate = self
         setupViews()
         setupConstraints()
     }
@@ -47,5 +48,11 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         constraints.append(noResultsView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
         constraints.append(noResultsView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
         NSLayoutConstraint.activate(constraints)
+    }
+}
+
+extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
     }
 }
