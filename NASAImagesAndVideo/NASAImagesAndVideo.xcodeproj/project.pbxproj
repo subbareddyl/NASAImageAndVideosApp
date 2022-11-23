@@ -17,6 +17,11 @@
 		03A295DF292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295DE292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift */; };
 		03A295E1292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295E0292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift */; };
 		03F3B2C0292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */; };
+		03F3B2C2292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C1292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift */; };
+		03F3B2C5292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C4292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift */; };
+		03F3B2C7292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */; };
+		03F3B2C9292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C8292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift */; };
+		03F3B2CB292DF54800DC0FC2 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2CA292DF54800DC0FC2 /* Link.swift */; };
 		7772BD7B5CC0D834B868D24D /* Pods_NASAImagesAndVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCC523EFFFB8722A1D85BD7 /* Pods_NASAImagesAndVideo.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +57,11 @@
 		03A295DE292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideoUITests.swift; sourceTree = "<group>"; };
 		03A295E0292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosCollectionViewController.swift; sourceTree = "<group>"; };
+		03F3B2C1292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResult.swift; sourceTree = "<group>"; };
+		03F3B2C4292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultCollection.swift; sourceTree = "<group>"; };
+		03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultItem.swift; sourceTree = "<group>"; };
+		03F3B2C8292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultItemData.swift; sourceTree = "<group>"; };
+		03F3B2CA292DF54800DC0FC2 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		28963AC8B5A5160BB1270B98 /* Pods-NASAImagesAndVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASAImagesAndVideo.release.xcconfig"; path = "Target Support Files/Pods-NASAImagesAndVideo/Pods-NASAImagesAndVideo.release.xcconfig"; sourceTree = "<group>"; };
 		5FCC523EFFFB8722A1D85BD7 /* Pods_NASAImagesAndVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NASAImagesAndVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A72649216D4FEAD54D2316 /* Pods-NASAImagesAndVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASAImagesAndVideo.debug.xcconfig"; path = "Target Support Files/Pods-NASAImagesAndVideo/Pods-NASAImagesAndVideo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +118,7 @@
 		03A295BC292DBDE700CEFFA5 /* NASAImagesAndVideo */ = {
 			isa = PBXGroup;
 			children = (
+				03F3B2C3292DEF7000DC0FC2 /* Models */,
 				03A295BD292DBDE700CEFFA5 /* AppDelegate.swift */,
 				03A295BF292DBDE700CEFFA5 /* SceneDelegate.swift */,
 				03A295C1292DBDE700CEFFA5 /* RootViewController.swift */,
@@ -135,6 +146,18 @@
 				03A295E0292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift */,
 			);
 			path = NASAImagesAndVideoUITests;
+			sourceTree = "<group>";
+		};
+		03F3B2C3292DEF7000DC0FC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03F3B2C1292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift */,
+				03F3B2C8292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift */,
+				03F3B2CA292DF54800DC0FC2 /* Link.swift */,
+				03F3B2C4292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift */,
+				03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0AEB66F48DC1AE338D75136E /* Frameworks */ = {
@@ -330,8 +353,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A295C2292DBDE700CEFFA5 /* RootViewController.swift in Sources */,
+				03F3B2C5292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift in Sources */,
+				03F3B2C2292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift in Sources */,
 				03F3B2C0292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift in Sources */,
+				03F3B2C9292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift in Sources */,
 				03A295BE292DBDE700CEFFA5 /* AppDelegate.swift in Sources */,
+				03F3B2CB292DF54800DC0FC2 /* Link.swift in Sources */,
+				03F3B2C7292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift in Sources */,
 				03A295C0292DBDE700CEFFA5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
