@@ -118,11 +118,10 @@
 		03A295BC292DBDE700CEFFA5 /* NASAImagesAndVideo */ = {
 			isa = PBXGroup;
 			children = (
+				03F3B2CC292DF63D00DC0FC2 /* ViewControllers */,
 				03F3B2C3292DEF7000DC0FC2 /* Models */,
 				03A295BD292DBDE700CEFFA5 /* AppDelegate.swift */,
 				03A295BF292DBDE700CEFFA5 /* SceneDelegate.swift */,
-				03A295C1292DBDE700CEFFA5 /* RootViewController.swift */,
-				03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */,
 				03A295C3292DBDE700CEFFA5 /* Main.storyboard */,
 				03A295C6292DBDE800CEFFA5 /* Assets.xcassets */,
 				03A295C8292DBDE800CEFFA5 /* LaunchScreen.storyboard */,
@@ -158,6 +157,15 @@
 				03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		03F3B2CC292DF63D00DC0FC2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03A295C1292DBDE700CEFFA5 /* RootViewController.swift */,
+				03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		0AEB66F48DC1AE338D75136E /* Frameworks */ = {
