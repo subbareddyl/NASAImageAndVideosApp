@@ -13,10 +13,6 @@ struct NASAImagesAndVideosSearchResultItemData: Codable {
     let keywords: [String]
     let nasa_id: String
     let date_created: String
-    let media_type: MediaType
+    let media_type: String
     let description: String
-}
-
-enum MediaType: String, Codable {
-    case image, video
 }

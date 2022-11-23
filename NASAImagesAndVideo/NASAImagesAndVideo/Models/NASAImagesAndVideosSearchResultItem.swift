@@ -10,5 +10,5 @@ import Foundation
 struct NASAImagesAndVideosSearchResultItem: Codable {
     let href: String
     let data: [NASAImagesAndVideosSearchResultItemData]
-    let links: [Link]
+    let links: [Link]?
 }

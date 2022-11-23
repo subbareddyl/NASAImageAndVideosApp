@@ -10,5 +10,5 @@ import Foundation
 struct Link: Codable {
     let href: String
     let rel: String
-    let render: MediaType?
+    let render: String?
 }
