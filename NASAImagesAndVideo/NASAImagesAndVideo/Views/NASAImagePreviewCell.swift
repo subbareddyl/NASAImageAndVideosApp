@@ -43,6 +43,7 @@ class NASAImagePreviewCell: UICollectionViewCell {
     private func setupViews()
     {
         addSubview(stackView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(nameLabel)
     }
@@ -50,6 +51,8 @@ class NASAImagePreviewCell: UICollectionViewCell {
     private func setupConstraints()
     {
         var constraints = [NSLayoutConstraint]()
+        constraints.append(imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor))
+        constraints.append(imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, constant: -60))
         constraints.append(stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5))
         constraints.append(stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5))
         constraints.append(stackView.topAnchor.constraint(equalTo: topAnchor))
@@ -59,7 +62,8 @@ class NASAImagePreviewCell: UICollectionViewCell {
 
     func updateViewModel(viewModel: NASAImagePreviewCellViewModel)
     {
-        imageView.kf.setImage(with: URL(string: viewModel.imageURL))
+        imageView.kf.setImage(with: URL(string: viewModel.imageURL),
+                              placeholder:UIImage(named: "placeholder-image"))
         nameLabel.text = viewModel.imageName
     }
 }
