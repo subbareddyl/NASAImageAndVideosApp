@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NASAImagesAndVideosCollectionViewController: UIViewController {
+class NASAImagesCollectionViewController: UIViewController {
 
     let imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,7 +21,7 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         return view
     }()
     
-    var viewModel = NASAImagesAndVideosCollectionViewModel()
+    var viewModel = NASAImagesCollectionViewModel()
     let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Enter name"
@@ -90,7 +90,7 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
     }
 }
 
-extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
+extension NASAImagesCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
             viewModel.getImagesAndVideosMetaData(text: text,
@@ -101,7 +101,7 @@ extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
     }
 }
 
-extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSource {
+extension NASAImagesCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NASAImagesCell", for: indexPath) as? NASAImagePreviewCell {
             cell.updateViewModel(viewModel: viewModel.imageCellsData[indexPath.item])
@@ -118,7 +118,7 @@ extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSourc
     }
 }
 
-extension NASAImagesAndVideosCollectionViewController: UICollectionViewDelegate {
+extension NASAImagesCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsViewModel = NASAImageDetailViewModel(imageDataModel: viewModel.imagesData[indexPath.item])
         let detailsVC = NASAImageDetailViewController(viewModel: detailsViewModel)

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class NASAImagesAndVideosCollectionViewModel {
+class NASAImagesCollectionViewModel {
     private var nextPageURLString: String?
     private var prevText: String?
     private(set) var imageCellsData = [NASAImagePreviewCellViewModel]()

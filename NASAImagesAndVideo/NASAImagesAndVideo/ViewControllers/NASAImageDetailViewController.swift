@@ -15,6 +15,7 @@ class NASAImageDetailViewController: UIViewController {
         view.axis = .vertical
         view.alignment = .center
         view.spacing = 10
+        view.isLayoutMarginsRelativeArrangement = true
         view.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         return view
     }()

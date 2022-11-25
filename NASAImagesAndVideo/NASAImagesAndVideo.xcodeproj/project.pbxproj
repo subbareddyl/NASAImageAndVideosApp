@@ -19,13 +19,13 @@
 		03A295D5292DBDE800CEFFA5 /* NASAImagesAndVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295D4292DBDE800CEFFA5 /* NASAImagesAndVideoTests.swift */; };
 		03A295DF292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295DE292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift */; };
 		03A295E1292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295E0292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift */; };
-		03F3B2C0292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */; };
+		03F3B2C0292DDA6800DC0FC2 /* NASAImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2BF292DDA6800DC0FC2 /* NASAImagesCollectionViewController.swift */; };
 		03F3B2C2292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C1292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift */; };
 		03F3B2C5292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C4292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift */; };
 		03F3B2C7292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */; };
 		03F3B2C9292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2C8292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift */; };
 		03F3B2CB292DF54800DC0FC2 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2CA292DF54800DC0FC2 /* Link.swift */; };
-		03F3B2CF292DF71800DC0FC2 /* NASAImagesAndVideosCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2CE292DF71800DC0FC2 /* NASAImagesAndVideosCollectionViewModel.swift */; };
+		03F3B2CF292DF71800DC0FC2 /* NASAImagesCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2CE292DF71800DC0FC2 /* NASAImagesCollectionViewModel.swift */; };
 		03F3B2D1292E041900DC0FC2 /* NASAImagePreviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2D0292E041900DC0FC2 /* NASAImagePreviewCellViewModel.swift */; };
 		03F3B2D4292E066700DC0FC2 /* NASAImagePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3B2D3292E066700DC0FC2 /* NASAImagePreviewCell.swift */; };
 		7772BD7B5CC0D834B868D24D /* Pods_NASAImagesAndVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCC523EFFFB8722A1D85BD7 /* Pods_NASAImagesAndVideo.framework */; };
@@ -65,13 +65,13 @@
 		03A295DA292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NASAImagesAndVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A295DE292DBDE800CEFFA5 /* NASAImagesAndVideoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideoUITests.swift; sourceTree = "<group>"; };
 		03A295E0292DBDE800CEFFA5 /* NASAImagesAndVideoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosCollectionViewController.swift; sourceTree = "<group>"; };
+		03F3B2BF292DDA6800DC0FC2 /* NASAImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		03F3B2C1292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResult.swift; sourceTree = "<group>"; };
 		03F3B2C4292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultCollection.swift; sourceTree = "<group>"; };
 		03F3B2C6292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultItem.swift; sourceTree = "<group>"; };
 		03F3B2C8292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosSearchResultItemData.swift; sourceTree = "<group>"; };
 		03F3B2CA292DF54800DC0FC2 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
-		03F3B2CE292DF71800DC0FC2 /* NASAImagesAndVideosCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesAndVideosCollectionViewModel.swift; sourceTree = "<group>"; };
+		03F3B2CE292DF71800DC0FC2 /* NASAImagesCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagesCollectionViewModel.swift; sourceTree = "<group>"; };
 		03F3B2D0292E041900DC0FC2 /* NASAImagePreviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagePreviewCellViewModel.swift; sourceTree = "<group>"; };
 		03F3B2D3292E066700DC0FC2 /* NASAImagePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImagePreviewCell.swift; sourceTree = "<group>"; };
 		28963AC8B5A5160BB1270B98 /* Pods-NASAImagesAndVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NASAImagesAndVideo.release.xcconfig"; path = "Target Support Files/Pods-NASAImagesAndVideo/Pods-NASAImagesAndVideo.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				03A295C1292DBDE700CEFFA5 /* RootViewController.swift */,
-				03F3B2BF292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift */,
+				03F3B2BF292DDA6800DC0FC2 /* NASAImagesCollectionViewController.swift */,
 				034550EC293097AB003AF27A /* NASAImageDetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -195,7 +195,7 @@
 		03F3B2CD292DF6FF00DC0FC2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				03F3B2CE292DF71800DC0FC2 /* NASAImagesAndVideosCollectionViewModel.swift */,
+				03F3B2CE292DF71800DC0FC2 /* NASAImagesCollectionViewModel.swift */,
 				034550EE2930AB6B003AF27A /* NASAImageDetailViewModel.swift */,
 				03F3B2D0292E041900DC0FC2 /* NASAImagePreviewCellViewModel.swift */,
 			);
@@ -406,8 +406,8 @@
 				03A295C2292DBDE700CEFFA5 /* RootViewController.swift in Sources */,
 				03F3B2C5292DF46A00DC0FC2 /* NASAImagesAndVideosSearchResultCollection.swift in Sources */,
 				03F3B2C2292DED1600DC0FC2 /* NASAImagesAndVideosSearchResult.swift in Sources */,
-				03F3B2CF292DF71800DC0FC2 /* NASAImagesAndVideosCollectionViewModel.swift in Sources */,
-				03F3B2C0292DDA6800DC0FC2 /* NASAImagesAndVideosCollectionViewController.swift in Sources */,
+				03F3B2CF292DF71800DC0FC2 /* NASAImagesCollectionViewModel.swift in Sources */,
+				03F3B2C0292DDA6800DC0FC2 /* NASAImagesCollectionViewController.swift in Sources */,
 				03F3B2D4292E066700DC0FC2 /* NASAImagePreviewCell.swift in Sources */,
 				03F3B2C9292DF4E500DC0FC2 /* NASAImagesAndVideosSearchResultItemData.swift in Sources */,
 				03F3B2D1292E041900DC0FC2 /* NASAImagePreviewCellViewModel.swift in Sources */,

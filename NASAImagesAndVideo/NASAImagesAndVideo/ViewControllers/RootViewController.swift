@@ -10,6 +10,6 @@ import UIKit
 class RootViewController: UINavigationController {
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(rootViewController: NASAImagesAndVideosCollectionViewController())
+        super.init(rootViewController: NASAImagesCollectionViewController())
     }
 }
