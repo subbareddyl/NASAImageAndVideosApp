@@ -80,8 +80,7 @@ class NASAImagesCollectionViewController: UIViewController {
                     self?.noResultsView.isHidden = true
                     self?.imagesCollectionView.isHidden = false
                     self?.imagesCollectionView.reloadData()
-                }
-                if let error = error {
+                } else if let error = error {
                     self?.present(ErrorMessageHelper.getErrorMessageAlertController(error: error),
                                   animated: true)
                 }
