@@ -9,22 +9,25 @@ import Foundation
 import Alamofire
 
 class NASAImagesAndVideosCollectionViewModel {
-    var nextPageURLString: String?
-    
+    private var nextPageURLString: String?
+    private var prevText: String?
+    var imagesData = [NASAImagePreviewCellViewModel]()
+
     func getImagesAndVideosMetaData(text: String,
                                     pageNumber: Int,
-                                    completion:@escaping ([NASAImagePreviewCellViewModel], Error?) -> Void) {
+                                    completion:@escaping (Error?) -> Void) {
+        if prevText != text {
+            imagesData = [NASAImagePreviewCellViewModel]()
+        }
         AF.request("https://images-api.nasa.gov/search",
                    method: .get,
                    parameters: ["q": text, "page": "\(pageNumber)"])
         .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { [weak self] response in
             switch response.result {
             case .success(let data):
-                let items = data.collection.items
-                var cellViewModels = [NASAImagePreviewCellViewModel]()
-                for item in items {
+                for item in data.collection.items {
                     if let cellViewModel = self?.getCellViewModelForItem(item: item) {
-                        cellViewModels.append(cellViewModel)
+                        self?.imagesData.append(cellViewModel)
                     }
                 }
                 for link in data.collection.links {
@@ -32,16 +35,17 @@ class NASAImagesAndVideosCollectionViewModel {
                         self?.nextPageURLString = link.href
                     }
                 }
-                completion(cellViewModels, nil)
+                completion(nil)
                 break
             case .failure(let error):
-                completion([NASAImagePreviewCellViewModel](), error)
+                completion(error)
                 break
             }
+            self?.prevText = text
         }
     }
 
-    func getImagesAndVideosMetaDataForNextPage(completion:@escaping ([NASAImagePreviewCellViewModel], Error?) -> Void)
+    func getImagesAndVideosMetaDataForNextPage(completion:@escaping (Error?) -> Void)
     {
         var queryItemsMap = [String: String]()
         if let nextPageURLString = nextPageURLString {
@@ -71,8 +75,7 @@ class NASAImagesAndVideosCollectionViewModel {
         }
         if let imageURL = imageURL {
             return NASAImagePreviewCellViewModel(imageURL: imageURL,
-                                                 imageName: title,
-                                                 imagesCollectionURL:item.href)
+                                                 imageName: title)
         }
         return nil
     }

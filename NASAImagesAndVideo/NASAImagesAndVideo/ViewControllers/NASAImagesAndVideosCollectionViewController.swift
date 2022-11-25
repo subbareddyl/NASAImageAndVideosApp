@@ -9,7 +9,6 @@ import UIKit
 
 class NASAImagesAndVideosCollectionViewController: UIViewController {
 
-    var imagesData = [NASAImagePreviewCellViewModel]()
     let imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width/2 - 10
@@ -73,14 +72,21 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func getImagesAndVideosMetaDataCompletion() -> (([NASAImagePreviewCellViewModel], Error?) -> Void)
+    private func getImagesAndVideosMetaDataCompletion() -> ((Error?) -> Void)
     {
-        return { [weak self] result, error in
-            self?.imagesData = (self?.imagesData ?? [NASAImagePreviewCellViewModel]()) + result
-            if let imagesData = self?.imagesData, imagesData.count > 0 {
+        return { [weak self] error in
+            if let imagesData = self?.viewModel.imagesData, imagesData.count > 0 {
                 self?.noResultsView.isHidden = true
                 self?.imagesCollectionView.isHidden = false
                 self?.imagesCollectionView.reloadData()
+            }
+            if let error = error {
+                let alertController = UIAlertController(title: "Error",
+                                                        message: error.localizedDescription,
+                                                        preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default)
+                alertController.addAction(alertAction)
+                self?.present(alertController, animated: true)
             }
         }
     }
@@ -100,8 +106,8 @@ extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
 extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NASAImagesCell", for: indexPath) as? NASAImagePreviewCell {
-            cell.updateViewModel(viewModel: imagesData[indexPath.item])
-            if(indexPath.item == imagesData.count - 1) {
+            cell.updateViewModel(viewModel: viewModel.imagesData[indexPath.item])
+            if(indexPath.item == viewModel.imagesData.count - 1) {
                 viewModel.getImagesAndVideosMetaDataForNextPage(completion: getImagesAndVideosMetaDataCompletion())
             }
             return cell
@@ -110,7 +116,7 @@ extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesData.count
+        return viewModel.imagesData.count
     }
 }
 

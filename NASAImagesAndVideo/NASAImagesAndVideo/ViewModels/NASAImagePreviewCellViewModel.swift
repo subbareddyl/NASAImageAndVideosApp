@@ -10,5 +10,4 @@ import Foundation
 struct NASAImagePreviewCellViewModel {
     let imageURL: String
     let imageName: String
-    let imagesCollectionURL: String
 }
