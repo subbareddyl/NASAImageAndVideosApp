@@ -11,13 +11,15 @@ import Alamofire
 class NASAImagesAndVideosCollectionViewModel {
     private var nextPageURLString: String?
     private var prevText: String?
-    var imagesData = [NASAImagePreviewCellViewModel]()
-
+    var imageCellsData = [NASAImagePreviewCellViewModel]()
+    var imagesData = [NASAImagesAndVideosSearchResultItem]()
+    
     func getImagesAndVideosMetaData(text: String,
                                     pageNumber: Int,
                                     completion:@escaping (Error?) -> Void) {
         if prevText != text {
-            imagesData = [NASAImagePreviewCellViewModel]()
+            imageCellsData = [NASAImagePreviewCellViewModel]()
+            imagesData = [NASAImagesAndVideosSearchResultItem]()
         }
         AF.request("https://images-api.nasa.gov/search",
                    method: .get,
@@ -25,14 +27,17 @@ class NASAImagesAndVideosCollectionViewModel {
         .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { [weak self] response in
             switch response.result {
             case .success(let data):
-                for item in data.collection.items {
-                    if let cellViewModel = self?.getCellViewModelForItem(item: item) {
-                        self?.imagesData.append(cellViewModel)
+                DispatchQueue.main.async {
+                    for item in data.collection.items {
+                        if let cellViewModel = self?.getCellViewModelForItem(item: item) {
+                            self?.imageCellsData.append(cellViewModel)
+                            self?.imagesData.append(item)
+                        }
                     }
-                }
-                for link in data.collection.links {
-                    if link.rel == "next" {
-                        self?.nextPageURLString = link.href
+                    for link in data.collection.links {
+                        if link.rel == "next" {
+                            self?.nextPageURLString = link.href
+                        }
                     }
                 }
                 completion(nil)

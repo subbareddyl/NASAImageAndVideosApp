@@ -75,18 +75,16 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
     private func getImagesAndVideosMetaDataCompletion() -> ((Error?) -> Void)
     {
         return { [weak self] error in
-            if let imagesData = self?.viewModel.imagesData, imagesData.count > 0 {
-                self?.noResultsView.isHidden = true
-                self?.imagesCollectionView.isHidden = false
-                self?.imagesCollectionView.reloadData()
-            }
-            if let error = error {
-                let alertController = UIAlertController(title: "Error",
-                                                        message: error.localizedDescription,
-                                                        preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .default)
-                alertController.addAction(alertAction)
-                self?.present(alertController, animated: true)
+            DispatchQueue.main.async {
+                if let imagesData = self?.viewModel.imagesData, imagesData.count > 0 {
+                    self?.noResultsView.isHidden = true
+                    self?.imagesCollectionView.isHidden = false
+                    self?.imagesCollectionView.reloadData()
+                }
+                if let error = error {
+                    self?.present(ErrorMessageHelper.getErrorMessageAlertController(error: error),
+                                  animated: true)
+                }
             }
         }
     }
@@ -106,7 +104,7 @@ extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
 extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NASAImagesCell", for: indexPath) as? NASAImagePreviewCell {
-            cell.updateViewModel(viewModel: viewModel.imagesData[indexPath.item])
+            cell.updateViewModel(viewModel: viewModel.imageCellsData[indexPath.item])
             if(indexPath.item == viewModel.imagesData.count - 1) {
                 viewModel.getImagesAndVideosMetaDataForNextPage(completion: getImagesAndVideosMetaDataCompletion())
             }
@@ -116,12 +114,14 @@ extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imagesData.count
+        return viewModel.imageCellsData.count
     }
 }
 
 extension NASAImagesAndVideosCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let detailsViewModel = NASAImageDetailViewModel(imageDataModel: viewModel.imagesData[indexPath.item])
+        let detailsVC = NASAImageDetailViewController(viewModel: detailsViewModel)
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
