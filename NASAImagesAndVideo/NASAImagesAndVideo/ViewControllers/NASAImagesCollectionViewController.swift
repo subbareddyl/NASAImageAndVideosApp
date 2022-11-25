@@ -36,7 +36,18 @@ class NASAImagesCollectionViewController: UIViewController {
         view.text = "No results"
         return view
     }()
-
+    private let asyncable: Asyncable
+    
+    init(asyncable: Asyncable = DispatchQueue.main)
+    {
+        self.asyncable = asyncable
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "NASA images and videos"
@@ -75,7 +86,10 @@ class NASAImagesCollectionViewController: UIViewController {
     private func getImagesAndVideosMetaDataCompletion() -> ((Error?) -> Void)
     {
         return { [weak self] error in
-            DispatchQueue.main.async {
+            self?.asyncable.async(group: nil,
+                                  qos: .unspecified,
+                                  flags: [],
+                                  execute: {
                 if let imagesData = self?.viewModel.imagesData, imagesData.count > 0 {
                     self?.noResultsView.isHidden = true
                     self?.imagesCollectionView.isHidden = false
@@ -84,7 +98,7 @@ class NASAImagesCollectionViewController: UIViewController {
                     self?.present(ErrorMessageHelper.getErrorMessageAlertController(error: error),
                                   animated: true)
                 }
-            }
+            })
         }
     }
 }

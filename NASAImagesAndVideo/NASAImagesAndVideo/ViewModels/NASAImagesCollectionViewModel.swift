@@ -13,7 +13,13 @@ class NASAImagesCollectionViewModel {
     private var prevText: String?
     private(set) var imageCellsData = [NASAImagePreviewCellViewModel]()
     private(set) var imagesData = [NASAImagesAndVideosSearchResultItem]()
-    
+    private let asyncable: Asyncable
+
+    init(asyncable: Asyncable = DispatchQueue.main)
+    {
+        self.asyncable = asyncable
+    }
+
     func getImagesAndVideosMetaData(text: String,
                                     pageNumber: Int,
                                     completion:@escaping (Error?) -> Void) {
@@ -27,7 +33,9 @@ class NASAImagesCollectionViewModel {
         .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { [weak self] response in
             switch response.result {
             case .success(let data):
-                DispatchQueue.main.async {
+                self?.asyncable.async(group: nil,
+                                      qos: .unspecified,
+                                      flags: []) {
                     for item in data.collection.items {
                         if let cellViewModel = self?.getCellViewModelForItem(item: item) {
                             self?.imageCellsData.append(cellViewModel)
