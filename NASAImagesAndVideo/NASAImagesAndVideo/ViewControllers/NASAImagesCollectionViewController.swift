@@ -50,7 +50,7 @@ class NASAImagesCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "NASA images and videos"
+        title = "NASA images"
         view.backgroundColor = UIColor.white
         searchBar.delegate = self
         imagesCollectionView.dataSource = self
