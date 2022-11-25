@@ -22,8 +22,7 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         return view
     }()
     
-    let viewModel = NASAImagesAndVideosCollectionViewModel()
-    var lastFetchedPageNumber = 0
+    var viewModel = NASAImagesAndVideosCollectionViewModel()
     let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Enter name"
@@ -45,6 +44,7 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         view.backgroundColor = UIColor.white
         searchBar.delegate = self
         imagesCollectionView.dataSource = self
+        imagesCollectionView.delegate = self
         imagesCollectionView.register(NASAImagePreviewCell.self, forCellWithReuseIdentifier: "NASAImagesCell")
         imagesCollectionView.isHidden = true
         setupViews()
@@ -72,20 +72,26 @@ class NASAImagesAndVideosCollectionViewController: UIViewController {
         constraints.append(imagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private func getImagesAndVideosMetaDataCompletion() -> (([NASAImagePreviewCellViewModel], Error?) -> Void)
+    {
+        return { [weak self] result, error in
+            self?.imagesData = (self?.imagesData ?? [NASAImagePreviewCellViewModel]()) + result
+            if let imagesData = self?.imagesData, imagesData.count > 0 {
+                self?.noResultsView.isHidden = true
+                self?.imagesCollectionView.isHidden = false
+                self?.imagesCollectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension NASAImagesAndVideosCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text, lastFetchedPageNumber < 100 {
+        if let text = searchBar.text {
             viewModel.getImagesAndVideosMetaData(text: text,
-                                                 pageNumber: 1) { [weak self] result, error in
-                self?.imagesData = result
-                if let imagesData = self?.imagesData, imagesData.count > 0 {
-                    self?.noResultsView.isHidden = true
-                    self?.imagesCollectionView.isHidden = false
-                    self?.imagesCollectionView.reloadData()
-                }
-            }
+                                                 pageNumber: 1,
+                                                 completion: getImagesAndVideosMetaDataCompletion())
         }
         searchBar.resignFirstResponder()
     }
@@ -95,6 +101,9 @@ extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NASAImagesCell", for: indexPath) as? NASAImagePreviewCell {
             cell.updateViewModel(viewModel: imagesData[indexPath.item])
+            if(indexPath.item == imagesData.count - 1) {
+                viewModel.getImagesAndVideosMetaDataForNextPage(completion: getImagesAndVideosMetaDataCompletion())
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -102,5 +111,11 @@ extension NASAImagesAndVideosCollectionViewController: UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesData.count
+    }
+}
+
+extension NASAImagesAndVideosCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

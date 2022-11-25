@@ -8,21 +8,28 @@
 import Foundation
 import Alamofire
 
-struct NASAImagesAndVideosCollectionViewModel {
+class NASAImagesAndVideosCollectionViewModel {
+    var nextPageURLString: String?
+    
     func getImagesAndVideosMetaData(text: String,
                                     pageNumber: Int,
                                     completion:@escaping ([NASAImagePreviewCellViewModel], Error?) -> Void) {
         AF.request("https://images-api.nasa.gov/search",
                    method: .get,
                    parameters: ["q": text, "page": "\(pageNumber)"])
-        .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { response in
+        .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { [weak self] response in
             switch response.result {
             case .success(let data):
                 let items = data.collection.items
                 var cellViewModels = [NASAImagePreviewCellViewModel]()
                 for item in items {
-                    if let cellViewModel = getCellViewModelForItem(item: item) {
+                    if let cellViewModel = self?.getCellViewModelForItem(item: item) {
                         cellViewModels.append(cellViewModel)
+                    }
+                }
+                for link in data.collection.links {
+                    if link.rel == "next" {
+                        self?.nextPageURLString = link.href
                     }
                 }
                 completion(cellViewModels, nil)
@@ -32,6 +39,21 @@ struct NASAImagesAndVideosCollectionViewModel {
                 break
             }
         }
+    }
+
+    func getImagesAndVideosMetaDataForNextPage(completion:@escaping ([NASAImagePreviewCellViewModel], Error?) -> Void)
+    {
+        var queryItemsMap = [String: String]()
+        if let nextPageURLString = nextPageURLString {
+            let urlComponents = URLComponents(string: nextPageURLString)
+            let queryItems = urlComponents?.queryItems ?? [URLQueryItem]()
+            for item in queryItems {
+                queryItemsMap[item.name] = item.value
+            }
+        }
+        getImagesAndVideosMetaData(text: queryItemsMap["q"] ?? "",
+                                   pageNumber: Int(queryItemsMap["page"] ?? "1") ?? 1,
+                                   completion: completion)
     }
 
     private func getCellViewModelForItem(item: NASAImagesAndVideosSearchResultItem) -> NASAImagePreviewCellViewModel? {
@@ -48,7 +70,9 @@ struct NASAImagesAndVideosCollectionViewModel {
             }
         }
         if let imageURL = imageURL {
-            return NASAImagePreviewCellViewModel(imageURL: imageURL, imageName: title)
+            return NASAImagePreviewCellViewModel(imageURL: imageURL,
+                                                 imageName: title,
+                                                 imagesCollectionURL:item.href)
         }
         return nil
     }

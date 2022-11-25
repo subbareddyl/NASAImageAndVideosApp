@@ -11,4 +11,5 @@ struct NASAImagesAndVideosSearchResultCollection: Codable {
     let version: String
     let href: String
     let items: [NASAImagesAndVideosSearchResultItem]
+    let links: [Link]
 }

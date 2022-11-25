@@ -10,7 +10,7 @@ import Foundation
 struct NASAImagesAndVideosSearchResultItemData: Codable {
     let center: String
     let title: String
-    let keywords: [String]
+    let keywords: [String]?
     let nasa_id: String
     let date_created: String
     let media_type: String
