@@ -5,10 +5,10 @@ Libraries used:
 2. Used Kingfisher library for image downloads. I choose this as this is popular one and has great support from open source contributors.
 
 App architecture:
-1. I used autolayout with constraints to build this app. 
+1. I used autolayout with constraints to build UI layout for this app. 
 2. Inital view controller was setup with storyboard. 
-4. After that all viewcontoller are programatically created and added to navigation stack. 
-4. I followed MVVM pattern to make that all functinal logic is in viewmodel and view controller only took care of views setup. 
+3. After that all viewcontoller are programatically created and added to the navigation stack. 
+4. I followed MVVM pattern to make that all functinal logic is in viewmodel and view controller only took care of views setup and calling viewModel for n/w requests, business logic etc.  
 5. I injected dependencies through initializers so that they can be mocked whererver necessary to write unit tests.
 6. In order to mock Alamofire we could can use https://github.com/WeTransfer/Mocker so that can write unit/integration tests.
 
