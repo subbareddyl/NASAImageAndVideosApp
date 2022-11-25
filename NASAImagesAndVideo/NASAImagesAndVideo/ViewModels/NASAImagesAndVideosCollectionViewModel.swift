@@ -11,8 +11,8 @@ import Alamofire
 class NASAImagesAndVideosCollectionViewModel {
     private var nextPageURLString: String?
     private var prevText: String?
-    var imageCellsData = [NASAImagePreviewCellViewModel]()
-    var imagesData = [NASAImagesAndVideosSearchResultItem]()
+    private(set) var imageCellsData = [NASAImagePreviewCellViewModel]()
+    private(set) var imagesData = [NASAImagesAndVideosSearchResultItem]()
     
     func getImagesAndVideosMetaData(text: String,
                                     pageNumber: Int,
@@ -66,6 +66,9 @@ class NASAImagesAndVideosCollectionViewModel {
     }
 
     private func getCellViewModelForItem(item: NASAImagesAndVideosSearchResultItem) -> NASAImagePreviewCellViewModel? {
+        if item.data.first?.media_type != "image"{
+            return nil
+        }
         var title = ""
         if item.data.count > 0 {
             title = item.data[0].title
