@@ -70,8 +70,10 @@ class NASAImageDetailViewController: UIViewController {
                     case .success(let imageResult):
                         let size = imageResult.image.size
                         let ratio = size.width/size.height
-                        if let imageView = self?.imageView, let view = self?.view {
-                            self?.stackView.insertArrangedSubview(imageView, at: 0)
+                        if let imageView = self?.imageView, let view = self?.view, let stackView = self?.stackView {
+                            if stackView.arrangedSubviews.count > 1 {
+                                self?.stackView.insertArrangedSubview(imageView, at: 1)
+                            }
                             NSLayoutConstraint.activate([imageView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40)])
                             NSLayoutConstraint.activate([imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: (1/ratio))])
                             self?.activityIndicator.stopAnimating()
