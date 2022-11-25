@@ -9,7 +9,7 @@ import UIKit
 
 class NASAImagesCollectionViewController: UIViewController {
 
-    let imagesCollectionView: UICollectionView = {
+    private let imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width/2 - 10
         layout.itemSize = CGSizeMake(width, width)
@@ -21,8 +21,8 @@ class NASAImagesCollectionViewController: UIViewController {
         return view
     }()
     
-    var viewModel = NASAImagesCollectionViewModel()
-    let searchBar: UISearchBar = {
+    private let viewModel = NASAImagesCollectionViewModel()
+    private let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Enter name"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +30,7 @@ class NASAImagesCollectionViewController: UIViewController {
         return view
     }()
     
-    let noResultsView: UILabel = {
+    private let noResultsView: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "No results"

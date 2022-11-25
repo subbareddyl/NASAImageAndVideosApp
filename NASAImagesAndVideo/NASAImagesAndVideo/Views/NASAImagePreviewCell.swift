@@ -10,13 +10,13 @@ import Kingfisher
 
 class NASAImagePreviewCell: UICollectionViewCell {
     
-    let imageView = UIImageView()
-    let nameLabel: UILabel = {
+    private let imageView = UIImageView()
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         return label
     }()
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical

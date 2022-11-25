@@ -9,8 +9,8 @@ import UIKit
 import Kingfisher
 
 class NASAImageDetailViewController: UIViewController {
-    let scrollView = UIScrollView()
-    let stackView: UIStackView = {
+    private let scrollView = UIScrollView()
+    private let stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.alignment = .center
@@ -19,26 +19,26 @@ class NASAImageDetailViewController: UIViewController {
         view.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         return view
     }()
-    let viewModel: NASAImageDetailViewModel
-    let imageView: UIImageView = {
+    private let viewModel: NASAImageDetailViewModel
+    private let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         return view
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.numberOfLines = 0
         return label
     }()
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let dateLabel = UILabel()
-    let activityIndicator:UIActivityIndicatorView = {
+    private let dateLabel = UILabel()
+    private let activityIndicator:UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
