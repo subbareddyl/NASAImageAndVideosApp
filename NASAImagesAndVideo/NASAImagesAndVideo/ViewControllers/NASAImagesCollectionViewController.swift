@@ -36,6 +36,12 @@ class NASAImagesCollectionViewController: UIViewController {
         view.text = "No results"
         return view
     }()
+    private let activityIndicator:UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let asyncable: Asyncable
     
     init(asyncable: Asyncable = DispatchQueue.main)
@@ -63,6 +69,7 @@ class NASAImagesCollectionViewController: UIViewController {
 
     private func setupViews()
     {
+        view.addSubview(activityIndicator)
         view.addSubview(searchBar)
         view.addSubview(noResultsView)
         view.addSubview(imagesCollectionView)
@@ -80,6 +87,10 @@ class NASAImagesCollectionViewController: UIViewController {
         constraints.append(imagesCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor))
         constraints.append(imagesCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor))
         constraints.append(imagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
+        constraints.append(activityIndicator.widthAnchor.constraint(equalToConstant: 100))
+        constraints.append(activityIndicator.heightAnchor.constraint(equalToConstant: 100))
+        constraints.append(activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+        constraints.append(activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor))
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -98,6 +109,7 @@ class NASAImagesCollectionViewController: UIViewController {
                     self?.present(ErrorMessageHelper.getErrorMessageAlertController(error: error),
                                   animated: true)
                 }
+                self?.activityIndicator.stopAnimating()
             })
         }
     }
@@ -106,6 +118,7 @@ class NASAImagesCollectionViewController: UIViewController {
 extension NASAImagesCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
+            activityIndicator.startAnimating()
             viewModel.getImagesAndVideosMetaData(text: text,
                                                  pageNumber: 1,
                                                  completion: getImagesAndVideosMetaDataCompletion())
