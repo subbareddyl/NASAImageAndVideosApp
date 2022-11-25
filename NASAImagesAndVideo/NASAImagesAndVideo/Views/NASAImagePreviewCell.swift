@@ -16,7 +16,6 @@ class NASAImagePreviewCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    var viewModel: NASAImagePreviewCellViewModel?
     let stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
