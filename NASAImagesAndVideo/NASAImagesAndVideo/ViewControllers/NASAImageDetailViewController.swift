@@ -57,7 +57,14 @@ class NASAImageDetailViewController: UIViewController {
         view.backgroundColor = UIColor.white
         addSubviews()
         titleLabel.text = viewModel.imageDataModel.data.first?.title
-        dateLabel.text = viewModel.imageDataModel.data.first?.date_created
+        if let date = viewModel.imageDataModel.data.first?.date_created {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            if let date = dateFormatter.date(from: date) {
+                dateLabel.text = DateFormatter.localizedString(from: date, dateStyle: DateFormatter.Style.long, timeStyle: DateFormatter.Style.long)
+            }
+        }
         descriptionLabel.text = viewModel.imageDataModel.data.first?.description
         activityIndicator.startAnimating()
         viewModel.getImageData(completion: { [weak self] imageURLString, error in
