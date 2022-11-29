@@ -10,6 +10,7 @@
 		034550ED293097AB003AF27A /* NASAImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034550EC293097AB003AF27A /* NASAImageDetailViewController.swift */; };
 		034550EF2930AB6B003AF27A /* NASAImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034550EE2930AB6B003AF27A /* NASAImageDetailViewModel.swift */; };
 		034550F22930B4E4003AF27A /* ErrorMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034550F12930B4E4003AF27A /* ErrorMessageHelper.swift */; };
+		03680C482935D343003E5ACD /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03680C472935D343003E5ACD /* UIViewExtensions.swift */; };
 		03A295BE292DBDE700CEFFA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295BD292DBDE700CEFFA5 /* AppDelegate.swift */; };
 		03A295C0292DBDE700CEFFA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295BF292DBDE700CEFFA5 /* SceneDelegate.swift */; };
 		03A295C2292DBDE700CEFFA5 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A295C1292DBDE700CEFFA5 /* RootViewController.swift */; };
@@ -53,6 +54,7 @@
 		034550EC293097AB003AF27A /* NASAImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImageDetailViewController.swift; sourceTree = "<group>"; };
 		034550EE2930AB6B003AF27A /* NASAImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAImageDetailViewModel.swift; sourceTree = "<group>"; };
 		034550F12930B4E4003AF27A /* ErrorMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageHelper.swift; sourceTree = "<group>"; };
+		03680C472935D343003E5ACD /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		03A295BA292DBDE700CEFFA5 /* NASAImagesAndVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASAImagesAndVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A295BD292DBDE700CEFFA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03A295BF292DBDE700CEFFA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				034550F12930B4E4003AF27A /* ErrorMessageHelper.swift */,
 				03C2E43E2930D82900DB5A62 /* Asyncable.swift */,
+				03680C472935D343003E5ACD /* UIViewExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				03F3B2CB292DF54800DC0FC2 /* Link.swift in Sources */,
 				03C2E43F2930D82900DB5A62 /* Asyncable.swift in Sources */,
 				03F3B2C7292DF4C200DC0FC2 /* NASAImagesAndVideosSearchResultItem.swift in Sources */,
+				03680C482935D343003E5ACD /* UIViewExtensions.swift in Sources */,
 				03A295C0292DBDE700CEFFA5 /* SceneDelegate.swift in Sources */,
 				034550ED293097AB003AF27A /* NASAImageDetailViewController.swift in Sources */,
 			);

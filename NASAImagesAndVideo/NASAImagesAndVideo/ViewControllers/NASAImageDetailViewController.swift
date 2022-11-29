@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class NASAImageDetailViewController: UIViewController {
-    private let scrollView = UIScrollView()
+    private let scrollView = UIScrollView().withAutolayout()
     private let stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -17,13 +17,13 @@ class NASAImageDetailViewController: UIViewController {
         view.spacing = 10
         view.isLayoutMarginsRelativeArrangement = true
         view.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-        return view
+        return view.withAutolayout()
     }()
     private let viewModel: NASAImageDetailViewModel
     private let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        return view
+        return view.withAutolayout()
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -34,14 +34,12 @@ class NASAImageDetailViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        return label.withAutolayout()
     }()
     private let dateLabel = UILabel()
     private let activityIndicator:UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        return view.withAutolayout()
     }()
     
     init(viewModel: NASAImageDetailViewModel) {
@@ -108,9 +106,6 @@ class NASAImageDetailViewController: UIViewController {
     private func setupConstraints()
     {
         var constraints = [NSLayoutConstraint]()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         constraints.append(view.leftAnchor.constraint(equalTo: scrollView.leftAnchor))
         constraints.append(view.rightAnchor.constraint(equalTo: scrollView.rightAnchor))
         constraints.append(scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))

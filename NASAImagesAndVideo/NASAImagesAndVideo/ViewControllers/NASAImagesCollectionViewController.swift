@@ -17,29 +17,25 @@ class NASAImagesCollectionViewController: UIViewController {
         layout.minimumLineSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         let view = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        return view.withAutolayout()
     }()
     
     private let viewModel = NASAImagesCollectionViewModel()
     private let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.placeholder = "Enter name"
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundImage = UIImage()
-        return view
+        return view.withAutolayout()
     }()
     
     private let noResultsView: UILabel = {
         let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "No results"
-        return view
+        return view.withAutolayout()
     }()
     private let activityIndicator:UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        return view.withAutolayout()
     }()
 
     private let asyncable: Asyncable
