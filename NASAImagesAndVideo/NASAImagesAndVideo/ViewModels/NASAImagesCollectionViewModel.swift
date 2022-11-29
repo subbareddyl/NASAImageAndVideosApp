@@ -14,7 +14,9 @@ class NASAImagesCollectionViewModel {
     private(set) var imageCellsData = [NASAImagePreviewCellViewModel]()
     private(set) var imagesData = [NASAImagesAndVideosSearchResultItem]()
     private let asyncable: Asyncable
-
+    private let textQueryParameterKey = "q"
+    private let pageQueryParameterKey = "page"
+    
     init(asyncable: Asyncable = DispatchQueue.main)
     {
         self.asyncable = asyncable
@@ -29,7 +31,8 @@ class NASAImagesCollectionViewModel {
         }
         AF.request("https://images-api.nasa.gov/search",
                    method: .get,
-                   parameters: ["q": text, "page": "\(pageNumber)"])
+                   parameters: [textQueryParameterKey: text,
+                                pageQueryParameterKey: "\(pageNumber)"])
         .responseDecodable(of: NASAImagesAndVideosSearchResult.self) { [weak self] response in
             switch response.result {
             case .success(let data):
@@ -64,8 +67,8 @@ class NASAImagesCollectionViewModel {
                 queryItemsMap[item.name] = item.value
             }
         }
-        getImagesAndVideosMetaData(text: queryItemsMap["q"] ?? "",
-                                   pageNumber: Int(queryItemsMap["page"] ?? "1") ?? 1,
+        getImagesAndVideosMetaData(text: queryItemsMap[textQueryParameterKey] ?? "",
+                                   pageNumber: Int(queryItemsMap[pageQueryParameterKey] ?? "1") ?? 1,
                                    completion: completion)
     }
 
