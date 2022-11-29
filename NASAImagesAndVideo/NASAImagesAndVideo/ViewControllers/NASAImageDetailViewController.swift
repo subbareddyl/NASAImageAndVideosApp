@@ -106,19 +106,14 @@ class NASAImageDetailViewController: UIViewController {
     private func setupConstraints()
     {
         var constraints = [NSLayoutConstraint]()
-        constraints.append(view.leftAnchor.constraint(equalTo: scrollView.leftAnchor))
-        constraints.append(view.rightAnchor.constraint(equalTo: scrollView.rightAnchor))
+        constraints += scrollView.constraintsToFillSuperViewH()
         constraints.append(scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
         constraints.append(scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
-        constraints.append(stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor))
-        constraints.append(stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor))
-        constraints.append(stackView.topAnchor.constraint(equalTo: scrollView.topAnchor))
-        constraints.append(stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor))
+        constraints += stackView.constraintsToFillSuperView()
         constraints.append(stackView.widthAnchor.constraint(equalTo: view.widthAnchor))
         constraints.append(activityIndicator.widthAnchor.constraint(equalToConstant: 100))
         constraints.append(activityIndicator.heightAnchor.constraint(equalToConstant: 100))
-        constraints.append(activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-        constraints.append(activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor))
+        constraints += activityIndicator.constraintsToSetToCenterOfSuperView()
         NSLayoutConstraint.activate(constraints)
     }
 }
