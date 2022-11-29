@@ -12,3 +12,16 @@ struct NASAImagesAndVideosSearchResultItem: Codable {
     let data: [NASAImagesAndVideosSearchResultItemData]
     let links: [Link]?
 }
+
+extension NASAImagesAndVideosSearchResultItem {
+    func getImagePreview() -> String? {
+        if let links = links {
+            for link in links {
+                if link.rel == "preview" {
+                    return link.href
+                }
+            }
+        }
+        return nil
+    }
+}

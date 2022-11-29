@@ -77,15 +77,7 @@ class NASAImagesCollectionViewModel {
         if item.data.count > 0 {
             title = item.data[0].title
         }
-        var imageURL: String?
-        if let links = item.links {
-            for link in links {
-                if link.rel == "preview" {
-                    imageURL = link.href
-                }
-            }
-        }
-        if let imageURL = imageURL {
+        if let imageURL = item.getImagePreview() {
             return NASAImagePreviewCellViewModel(imageURL: imageURL,
                                                  imageName: title)
         }
