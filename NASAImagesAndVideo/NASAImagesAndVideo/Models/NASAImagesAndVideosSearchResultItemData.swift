@@ -13,7 +13,7 @@ struct NASAImagesAndVideosSearchResultItemData: Codable {
     let keywords: [String]?
     let nasaId: String
     let dateCreated: String
-    let mediaType: String
+    let mediaType: MediaType
     let description: String
     
     enum CodingKeys: String, CodingKey {
@@ -24,5 +24,21 @@ struct NASAImagesAndVideosSearchResultItemData: Codable {
         case dateCreated = "date_created"
         case mediaType = "media_type"
         case description = "description"
+    }
+}
+
+enum MediaType: String {
+    case image = "image",
+         video = "video",
+         unknown
+}
+
+extension MediaType: Codable {
+    public init(from decoder: Decoder) throws {
+        guard let rawValue = try? decoder.singleValueContainer().decode(String.self) else {
+            self = .unknown
+            return
+        }
+        self = MediaType(rawValue: rawValue) ?? .unknown
     }
 }
