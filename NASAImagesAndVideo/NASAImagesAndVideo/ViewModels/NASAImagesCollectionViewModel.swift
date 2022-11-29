@@ -74,7 +74,7 @@ class NASAImagesCollectionViewModel {
     }
 
     private func getCellViewModelForItem(item: NASAImagesAndVideosSearchResultItem) -> NASAImagePreviewCellViewModel? {
-        if item.data.first?.media_type != "image"{
+        if item.data.first?.mediaType != "image"{
             return nil
         }
         var title = ""

@@ -57,7 +57,7 @@ class NASAImageDetailViewController: UIViewController {
         view.backgroundColor = UIColor.white
         addSubviews()
         titleLabel.text = viewModel.imageDataModel.data.first?.title
-        if let date = viewModel.imageDataModel.data.first?.date_created {
+        if let date = viewModel.imageDataModel.data.first?.dateCreated {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

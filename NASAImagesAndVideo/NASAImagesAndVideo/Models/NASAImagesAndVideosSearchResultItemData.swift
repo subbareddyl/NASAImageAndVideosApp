@@ -11,8 +11,18 @@ struct NASAImagesAndVideosSearchResultItemData: Codable {
     let center: String
     let title: String
     let keywords: [String]?
-    let nasa_id: String
-    let date_created: String
-    let media_type: String
+    let nasaId: String
+    let dateCreated: String
+    let mediaType: String
     let description: String
+    
+    enum CodingKeys: String, CodingKey {
+        case center = "center"
+        case title = "title"
+        case keywords = "keywords"
+        case nasaId = "nasa_id"
+        case dateCreated = "date_created"
+        case mediaType = "media_type"
+        case description = "description"
+    }
 }
