@@ -42,11 +42,7 @@ class NASAImagesCollectionViewModel {
                             self?.imagesData.append(item)
                         }
                     }
-                    for link in data.collection.links {
-                        if link.rel == "next" {
-                            self?.nextPageURLString = link.href
-                        }
-                    }
+                    self?.nextPageURLString = data.getNextPageURL()
                 }
                 completion(nil)
                 break
